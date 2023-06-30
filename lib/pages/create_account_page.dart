@@ -1,5 +1,5 @@
-import 'package:chat_app/home_Page.dart';
-import 'package:chat_app/user_service.dart';
+import 'package:chat_app/pages/home_page.dart';
+import 'package:chat_app/services/user_service.dart';
 import 'package:flutter/material.dart';
 
 class CreateAcoountPage extends StatefulWidget {
