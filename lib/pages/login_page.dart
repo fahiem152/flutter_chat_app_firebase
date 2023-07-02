@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 height: size.height / 20,
                 width: size.height / 20,
-                child: CircularProgressIndicator(),
+                child: const CircularProgressIndicator(),
               ),
             )
           : SingleChildScrollView(
@@ -39,14 +39,15 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment.centerLeft,
                     width: size.width / 0.5,
                     child: IconButton(
-                        icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                        icon: const Icon(Icons.arrow_back_ios),
+                        onPressed: () {}),
                   ),
                   SizedBox(
                     height: size.height / 50,
                   ),
                   Container(
                     width: size.width / 1.1,
-                    child: Text(
+                    child: const Text(
                       "Welcome",
                       style: TextStyle(
                         fontSize: 34,
@@ -89,9 +90,9 @@ class _LoginPageState extends State<LoginPage> {
                     height: size.height / 40,
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => CreateAcoountPage())),
-                    child: Text(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const CreateAcoountPage())),
+                    child: const Text(
                       "Create Account",
                       style: TextStyle(
                         color: Colors.blue,
@@ -123,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => HomePage(),
+                  builder: (_) => const HomePage(),
                 ),
               );
             } else {
@@ -145,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
             color: Colors.blue,
           ),
           alignment: Alignment.center,
-          child: Text(
+          child: const Text(
             "Login",
             style: TextStyle(
               color: Colors.white,
@@ -166,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
         decoration: InputDecoration(
           prefixIcon: Icon(icon),
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

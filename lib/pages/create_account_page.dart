@@ -24,7 +24,7 @@ class _CreateAcoountPageState extends State<CreateAcoountPage> {
               child: Container(
                 height: size.height / 20,
                 width: size.height / 20,
-                child: CircularProgressIndicator(),
+                child: const CircularProgressIndicator(),
               ),
             )
           : SingleChildScrollView(
@@ -37,14 +37,15 @@ class _CreateAcoountPageState extends State<CreateAcoountPage> {
                     alignment: Alignment.centerLeft,
                     width: size.width / 0.5,
                     child: IconButton(
-                        icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                        icon: const Icon(Icons.arrow_back_ios),
+                        onPressed: () {}),
                   ),
                   SizedBox(
                     height: size.height / 50,
                   ),
                   Container(
                     width: size.width / 1.1,
-                    child: Text(
+                    child: const Text(
                       "Welcome",
                       style: TextStyle(
                         fontSize: 34,
@@ -95,7 +96,7 @@ class _CreateAcoountPageState extends State<CreateAcoountPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(
                           color: Colors.blue,
@@ -127,7 +128,7 @@ class _CreateAcoountPageState extends State<CreateAcoountPage> {
                 isLoading = false;
               });
               Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => HomePage()));
+                  context, MaterialPageRoute(builder: (_) => const HomePage()));
               print("Account Created Sucessfull");
             } else {
               print("Login Failed");
@@ -148,7 +149,7 @@ class _CreateAcoountPageState extends State<CreateAcoountPage> {
             color: Colors.blue,
           ),
           alignment: Alignment.center,
-          child: Text(
+          child: const Text(
             "Create Account",
             style: TextStyle(
               color: Colors.white,
@@ -169,7 +170,7 @@ class _CreateAcoountPageState extends State<CreateAcoountPage> {
         decoration: InputDecoration(
           prefixIcon: Icon(icon),
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

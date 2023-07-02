@@ -1,4 +1,5 @@
 import 'package:chat_app/pages/chat_room_page.dart';
+import 'package:chat_app/pages/group_chat/group_chat_page.dart';
 import 'package:chat_app/services/user_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   static String getConversationID(String id, String id2) =>
-      id2.hashCode <= id.hashCode ? '${id2}$id' : '${id}${id2}';
+      id2.hashCode <= id.hashCode ? '$id2-$id' : '$id-$id2';
 
   String chatRoomId(String user1, String user2) {
     if (user1[0].toLowerCase().codeUnits[0] >
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         .then((value) {
       if (value.docs.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text("No user found"),
           ),
         );
@@ -87,17 +88,26 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Screen"),
+        title: const Text("Home Screen"),
         actions: [
-          IconButton(icon: Icon(Icons.logout), onPressed: () => logOut(context))
+          IconButton(
+              icon: const Icon(Icons.logout), onPressed: () => logOut(context))
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.group),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => const GroupChatPage(),
+          ),
+        ),
       ),
       body: isLoading
           ? Center(
               child: Container(
                 height: size.height / 20,
                 width: size.height / 20,
-                child: CircularProgressIndicator(),
+                child: const CircularProgressIndicator(),
               ),
             )
           : Column(
@@ -128,7 +138,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 ),
                 ElevatedButton(
                   onPressed: onSearch,
-                  child: Text("Search"),
+                  child: const Text("Search"),
                 ),
                 SizedBox(
                   height: size.height / 30,
@@ -142,7 +152,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                           // );
                           if (_auth.currentUser!.displayName == null) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content:
                                     Text("Please create an account first User"),
                               ),
@@ -166,7 +176,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content:
                                       Text("Please create an account first"),
                                 ),
@@ -174,17 +184,18 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                             }
                           }
                         },
-                        leading: Icon(Icons.account_box, color: Colors.black),
+                        leading:
+                            const Icon(Icons.account_box, color: Colors.black),
                         title: Text(
                           userMap!['name'],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 17,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         subtitle: Text(userMap!['email']),
-                        trailing: Icon(Icons.chat, color: Colors.black),
+                        trailing: const Icon(Icons.chat, color: Colors.black),
                       )
                     : Container(),
               ],

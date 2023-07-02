@@ -9,9 +9,9 @@ class AuthenticatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (_auth.currentUser != null) {
-      return HomePage();
+      return const HomePage();
     } else {
-      return LoginPage();
+      return const LoginPage();
     }
   }
 }

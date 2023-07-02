@@ -11,7 +11,7 @@ class ChatRoomPage extends StatelessWidget {
   final Map<String, dynamic> userMap;
   final String chatRoomId;
 
-  ChatRoomPage({required this.chatRoomId, required this.userMap});
+  ChatRoomPage({super.key, required this.chatRoomId, required this.userMap});
 
   final TextEditingController _message = TextEditingController();
 
@@ -21,8 +21,8 @@ class ChatRoomPage extends StatelessWidget {
   File? imageFile;
 
   Future getImage() async {
-    ImagePicker _picker = ImagePicker();
-    await _picker.pickImage(source: ImageSource.gallery).then((xFile) {
+    ImagePicker picker = ImagePicker();
+    await picker.pickImage(source: ImageSource.gallery).then((xFile) {
       if (xFile != null) {
         imageFile = File(xFile.path);
         uploadImage();
@@ -31,7 +31,7 @@ class ChatRoomPage extends StatelessWidget {
   }
 
   Future uploadImage() async {
-    String fileName = Uuid().v1();
+    String fileName = const Uuid().v1();
     int status = 1;
 
     await _firestore
@@ -119,7 +119,7 @@ class ChatRoomPage extends StatelessWidget {
                 ),
               );
             } else {
-              return Text('data');
+              return const Text('data');
             }
           },
         ),
@@ -172,7 +172,7 @@ class ChatRoomPage extends StatelessWidget {
                         decoration: InputDecoration(
                             suffixIcon: IconButton(
                               onPressed: () => getImage(),
-                              icon: Icon(Icons.photo),
+                              icon: const Icon(Icons.photo),
                             ),
                             hintText: "Send Message",
                             border: OutlineInputBorder(
@@ -181,7 +181,7 @@ class ChatRoomPage extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                        icon: Icon(Icons.send), onPressed: onSendMessage),
+                        icon: const Icon(Icons.send), onPressed: onSendMessage),
                   ],
                 ),
               ),
@@ -201,15 +201,15 @@ class ChatRoomPage extends StatelessWidget {
                 ? Alignment.centerRight
                 : Alignment.centerLeft,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+              margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.blue,
               ),
               child: Text(
                 map['message'],
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
@@ -220,7 +220,7 @@ class ChatRoomPage extends StatelessWidget {
         : Container(
             height: size.height / 2.5,
             width: size.width,
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
             alignment: map['sendby'] == _auth.currentUser!.displayName
                 ? Alignment.centerRight
                 : Alignment.centerLeft,
@@ -242,7 +242,7 @@ class ChatRoomPage extends StatelessWidget {
                         map['message'],
                         fit: BoxFit.cover,
                       )
-                    : CircularProgressIndicator(),
+                    : const CircularProgressIndicator(),
               ),
             ),
           );
