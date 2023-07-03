@@ -8,6 +8,7 @@ class AuthenticatePage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
+    debugPrint('AuthenticatePage: ${_auth.currentUser}');
     if (_auth.currentUser != null) {
       return const HomePage();
     } else {

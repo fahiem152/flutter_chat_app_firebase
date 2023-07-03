@@ -1,4 +1,4 @@
-import 'package:chat_app/pages/group_chat/add_member_page.dart';
+import 'package:chat_app/pages/group_chat/create_member_gorup/add_member_page.dart';
 import 'package:chat_app/pages/group_chat/group_chat_room_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -35,6 +35,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
         .then((value) {
       setState(() {
         groupList = value.docs;
+        debugPrint(groupList.length.toString());
         isLoading = false;
       });
     });
